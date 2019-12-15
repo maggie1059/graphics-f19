@@ -2,13 +2,13 @@
     <qresource prefix="/shaders">
         <file alias="default.frag">shaders/shader.frag</file>
         <file alias="default.vert">shaders/shader.vert</file>
-        <file>normals.frag</file>
-        <file>normals.gsh</file>
-        <file>normals.vert</file>
-        <file>ray.frag</file>
-        <file>ray.vert</file>
-        <file>skybox.frag</file>
-        <file>skybox.vert</file>
+        <file alias="normals.frag">shaders/normals.frag</file>
+        <file alias="normals.gsh">shaders/normals.gsh</file>
+        <file alias="normals.vert">shaders/normals.vert</file>
+        <file alias="ray.frag">shaders/ray.frag</file>
+        <file alias="ray.vert">shaders/ray.vert</file>
+        <file alias="skybox.frag">shaders/skybox.frag</file>
+        <file alias="skybox.vert">shaders/skybox.vert</file>
     </qresource>
     <qresource prefix="/skybox">
         <file alias="negy.jpg">shaders/skybox/negy.jpg</file>
