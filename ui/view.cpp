@@ -349,7 +349,6 @@ void View::secondPass(){
     m_phongShader->applyMaterial(m_material);
     updateMatrices();
     buildTrees();
-    setSunUniforms();
     m_phongShader->unbind();
 
     skybox_shader->bind();
