@@ -78,8 +78,7 @@ SOURCES       = ui/mainwindow.cpp \
 		lib/RGBA.cpp \
 		shapes/trees/SimpleTree.cpp \
 		shapes/trees/StringGenerator.cpp \
-		shapes/trees/StringParser.cpp \
-		shapes/trees/NewTree.cpp qrc_resources.cpp \
+		shapes/trees/StringParser.cpp qrc_resources.cpp \
 		moc_mainwindow.cpp \
 		moc_view.cpp \
 		moc_orbitingcamera.cpp \
@@ -113,7 +112,6 @@ OBJECTS       = mainwindow.o \
 		SimpleTree.o \
 		StringGenerator.o \
 		StringParser.o \
-		NewTree.o \
 		qrc_resources.o \
 		moc_mainwindow.o \
 		moc_view.o \
@@ -250,8 +248,7 @@ DIST          = shaders/normals/normals.vert \
 		lib/RGBA.h \
 		shapes/trees/SimpleTree.h \
 		shapes/trees/StringGenerator.h \
-		shapes/trees/StringParser.h \
-		shapes/trees/NewTree.h ui/mainwindow.cpp \
+		shapes/trees/StringParser.h ui/mainwindow.cpp \
 		main.cpp \
 		glew-1.10.0/src/glew.c \
 		ui/view.cpp \
@@ -279,8 +276,7 @@ DIST          = shaders/normals/normals.vert \
 		lib/RGBA.cpp \
 		shapes/trees/SimpleTree.cpp \
 		shapes/trees/StringGenerator.cpp \
-		shapes/trees/StringParser.cpp \
-		shapes/trees/NewTree.cpp
+		shapes/trees/StringParser.cpp
 QMAKE_TARGET  = final
 DESTDIR       = 
 TARGET        = final
@@ -505,8 +501,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ui/mainwindow.h ui_mainwindow.h glew-1.10.0/include/GL/glew.h ui/view.h ui/viewformat.h uniforms/uniformvariable.h lib/common.h camera/orbitingcamera.h camera/camera.h uniforms/varsfile.h shapes/cube.h lib/resourceloader.h shapes/sphere.h shapes/openglshape.h gl/datatype/FBO.h gl/datatype/VBO.h gl/datatype/VBOAttribMarker.h gl/datatype/VAO.h gl/datatype/IBO.h gl/shaders/ShaderAttribLocations.h gl/textures/Texture.h gl/textures/Texture2D.h gl/textures/TextureParameters.h gl/textures/TextureParametersBuilder.h gl/textures/RenderBuffer.h gl/textures/DepthBuffer.h gl/GLDebug.h lib/errorchecker.h gl/shaders/CS123Shader.h gl/shaders/Shader.h lib/CS123SceneData.h lib/RGBA.h shapes/trees/SimpleTree.h shapes/trees/StringGenerator.h shapes/trees/StringParser.h shapes/trees/NewTree.h $(DISTDIR)/
-	$(COPY_FILE) --parents ui/mainwindow.cpp main.cpp glew-1.10.0/src/glew.c ui/view.cpp ui/viewformat.cpp uniforms/uniformvariable.cpp camera/orbitingcamera.cpp uniforms/varsfile.cpp lib/resourceloader.cpp shapes/openglshape.cpp gl/datatype/FBO.cpp gl/datatype/VBO.cpp gl/datatype/VBOAttribMarker.cpp gl/datatype/VAO.cpp gl/datatype/IBO.cpp gl/textures/Texture.cpp gl/textures/Texture2D.cpp gl/textures/TextureParameters.cpp gl/textures/TextureParametersBuilder.cpp gl/textures/RenderBuffer.cpp gl/textures/DepthBuffer.cpp gl/GLDebug.cpp lib/errorchecker.cpp gl/shaders/CS123Shader.cpp gl/shaders/Shader.cpp lib/RGBA.cpp shapes/trees/SimpleTree.cpp shapes/trees/StringGenerator.cpp shapes/trees/StringParser.cpp shapes/trees/NewTree.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ui/mainwindow.h ui_mainwindow.h glew-1.10.0/include/GL/glew.h ui/view.h ui/viewformat.h uniforms/uniformvariable.h lib/common.h camera/orbitingcamera.h camera/camera.h uniforms/varsfile.h shapes/cube.h lib/resourceloader.h shapes/sphere.h shapes/openglshape.h gl/datatype/FBO.h gl/datatype/VBO.h gl/datatype/VBOAttribMarker.h gl/datatype/VAO.h gl/datatype/IBO.h gl/shaders/ShaderAttribLocations.h gl/textures/Texture.h gl/textures/Texture2D.h gl/textures/TextureParameters.h gl/textures/TextureParametersBuilder.h gl/textures/RenderBuffer.h gl/textures/DepthBuffer.h gl/GLDebug.h lib/errorchecker.h gl/shaders/CS123Shader.h gl/shaders/Shader.h lib/CS123SceneData.h lib/RGBA.h shapes/trees/SimpleTree.h shapes/trees/StringGenerator.h shapes/trees/StringParser.h $(DISTDIR)/
+	$(COPY_FILE) --parents ui/mainwindow.cpp main.cpp glew-1.10.0/src/glew.c ui/view.cpp ui/viewformat.cpp uniforms/uniformvariable.cpp camera/orbitingcamera.cpp uniforms/varsfile.cpp lib/resourceloader.cpp shapes/openglshape.cpp gl/datatype/FBO.cpp gl/datatype/VBO.cpp gl/datatype/VBOAttribMarker.cpp gl/datatype/VAO.cpp gl/datatype/IBO.cpp gl/textures/Texture.cpp gl/textures/Texture2D.cpp gl/textures/TextureParameters.cpp gl/textures/TextureParametersBuilder.cpp gl/textures/RenderBuffer.cpp gl/textures/DepthBuffer.cpp gl/GLDebug.cpp lib/errorchecker.cpp gl/shaders/CS123Shader.cpp gl/shaders/Shader.cpp lib/RGBA.cpp shapes/trees/SimpleTree.cpp shapes/trees/StringGenerator.cpp shapes/trees/StringParser.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ui/mainwindow.ui $(DISTDIR)/
 
 
@@ -1903,9 +1899,6 @@ StringParser.o: shapes/trees/StringParser.cpp shapes/trees/StringParser.h \
 		gl/datatype/VBO.h \
 		gl/datatype/VBOAttribMarker.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o StringParser.o shapes/trees/StringParser.cpp
-
-NewTree.o: shapes/trees/NewTree.cpp shapes/trees/NewTree.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o NewTree.o shapes/trees/NewTree.cpp
 
 qrc_resources.o: qrc_resources.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resources.o qrc_resources.cpp

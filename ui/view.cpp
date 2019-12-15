@@ -350,7 +350,6 @@ void View::secondPass(){
     updateMatrices();
     buildTrees();
     setSunUniforms();
-//    renderSun();
     m_phongShader->unbind();
 
     skybox_shader->bind();

@@ -1,6 +1,11 @@
 Final Project Readme
 
 For our final project, we created a scene with trees and a light source producing god/crepuscular rays with an environment map as the background. 
+IMPORTANT NOTE: We weren't able to get the program running correctly on a non-
+department machine and were unable to figure out why, so we included a screen
+recording of us running the demo on the department machine titled FINAL_DEMO.mp4
+and included it in this handin (in the root folder).
+
 
 We used the final stencil code as the foundation for our project, and imported in OpenGLShape, uniforms, the orbiting camera, gl (including textures, data types, and shaders), lib (with error checker and resourceloader), and some of the shapes from our past projects and labs. We especially relied on lab 7 (FBOs) and lab 9 (which used an environment map) for much of our set up.
 

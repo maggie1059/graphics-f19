@@ -49,8 +49,7 @@ SOURCES += ui/mainwindow.cpp \
     lib/RGBA.cpp \
     shapes/trees/SimpleTree.cpp \
     shapes/trees/StringGenerator.cpp \
-    shapes/trees/StringParser.cpp \
-    shapes/trees/NewTree.cpp
+    shapes/trees/StringParser.cpp
 
 HEADERS += ui/mainwindow.h \
     ui_mainwindow.h \
@@ -86,8 +85,7 @@ HEADERS += ui/mainwindow.h \
     lib/RGBA.h \
     shapes/trees/SimpleTree.h \
     shapes/trees/StringGenerator.h \
-    shapes/trees/StringParser.h \
-    shapes/trees/NewTree.h
+    shapes/trees/StringParser.h
 
 FORMS += ui/mainwindow.ui
 INCLUDEPATH += glm ui glew-1.10.0/include

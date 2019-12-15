@@ -3,7 +3,7 @@
 const float exposure=0.0034;
 const float decay=1.f;
 const float density=0.84;
-const float weight=2.15; // 7.65
+const float weight=2.15;
 uniform sampler2D firstPass;
 uniform sampler2D secondPass;
 in vec2 uv;
