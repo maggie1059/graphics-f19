@@ -27,7 +27,7 @@ uniform vec3 diffuse_color;
 uniform vec3 specular_color;
 uniform float shininess;
 
-uniform bool useLighting;     // Whether to calculate lighting using lighting equation
+const bool useLighting = true;     // Whether to calculate lighting using lighting equation
 uniform bool useArrowOffsets; // True if rendering the arrowhead of a normal for Shapes
 
 void main()

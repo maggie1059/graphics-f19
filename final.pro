@@ -25,13 +25,69 @@ SOURCES += ui/mainwindow.cpp \
     main.cpp \
     glew-1.10.0/src/glew.c \
     ui/view.cpp \
-    ui/viewformat.cpp
+    ui/viewformat.cpp \
+    uniforms/uniformvariable.cpp \
+    camera/orbitingcamera.cpp \
+    uniforms/varsfile.cpp \
+    lib/resourceloader.cpp \
+    shapes/openglshape.cpp \
+    gl/datatype/FBO.cpp \
+    gl/datatype/VBO.cpp \
+    gl/datatype/VBOAttribMarker.cpp \
+    gl/datatype/VAO.cpp \
+    gl/datatype/IBO.cpp \
+    gl/textures/Texture.cpp \
+    gl/textures/Texture2D.cpp \
+    gl/textures/TextureParameters.cpp \
+    gl/textures/TextureParametersBuilder.cpp \
+    gl/textures/RenderBuffer.cpp \
+    gl/textures/DepthBuffer.cpp \
+    gl/GLDebug.cpp \
+    lib/errorchecker.cpp \
+    gl/shaders/CS123Shader.cpp \
+    gl/shaders/Shader.cpp \
+    lib/RGBA.cpp \
+    shapes/trees/SimpleTree.cpp \
+    shapes/trees/StringGenerator.cpp \
+    shapes/trees/StringParser.cpp \
+    shapes/trees/NewTree.cpp
 
 HEADERS += ui/mainwindow.h \
     ui_mainwindow.h \
     glew-1.10.0/include/GL/glew.h \
     ui/view.h \
-    ui/viewformat.h
+    ui/viewformat.h \
+    uniforms/uniformvariable.h \
+    lib/common.h \
+    camera/orbitingcamera.h \
+    camera/camera.h \
+    uniforms/varsfile.h \
+    shapes/cube.h \
+    lib/resourceloader.h \
+    shapes/sphere.h \
+    shapes/openglshape.h \
+    gl/datatype/FBO.h \
+    gl/datatype/VBO.h \
+    gl/datatype/VBOAttribMarker.h \
+    gl/datatype/VAO.h \
+    gl/datatype/IBO.h \
+    gl/shaders/ShaderAttribLocations.h \
+    gl/textures/Texture.h \
+    gl/textures/Texture2D.h \
+    gl/textures/TextureParameters.h \
+    gl/textures/TextureParametersBuilder.h \
+    gl/textures/RenderBuffer.h \
+    gl/textures/DepthBuffer.h \
+    gl/GLDebug.h \
+    lib/errorchecker.h \
+    gl/shaders/CS123Shader.h \
+    gl/shaders/Shader.h \
+    lib/CS123SceneData.h \
+    lib/RGBA.h \
+    shapes/trees/SimpleTree.h \
+    shapes/trees/StringGenerator.h \
+    shapes/trees/StringParser.h \
+    shapes/trees/NewTree.h
 
 FORMS += ui/mainwindow.ui
 INCLUDEPATH += glm ui glew-1.10.0/include
