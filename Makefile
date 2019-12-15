@@ -532,15 +532,8 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_resources.cpp
 qrc_resources.cpp: resources.qrc \
 		/usr/lib/qt5/bin/rcc \
-		ray.vert \
-		normals.frag \
 		shaders/shader.frag \
-		skybox.vert \
-		normals.gsh \
-		normals.vert \
-		ray.frag \
 		shaders/shader.vert \
-		skybox.frag \
 		shaders/skybox/negx.jpg \
 		shaders/skybox/posx.jpg \
 		shaders/skybox/negz.jpg \
