@@ -30,6 +30,7 @@ private:
     StringGenerator m_generator;
     std::vector<Instruction> m_enum_list;
     std::vector<glm::vec3> m_coords;
+    int m_recurse;
 
 };
 

@@ -9,7 +9,7 @@
 #include <iostream>
 
 StringParser::StringParser(int num_recurse, glm::vec3 origin):
-    m_generator(num_recurse)
+    m_generator(num_recurse), m_recurse(num_recurse)
 {
     m_enum_list = m_generator.makeString();
     m_coords.reserve(m_enum_list.size());
@@ -18,6 +18,7 @@ StringParser::StringParser(int num_recurse, glm::vec3 origin):
     m_skip_list.push_back(false);
     m_traversal_order.reserve(m_coords.size());
     m_traversal_order.push_back(0);
+
 }
 
 StringParser::~StringParser()
@@ -95,17 +96,20 @@ std::vector<glm::vec3> StringParser::getCoords() {
         }
 
     }
-    m_traversal_order.pop_back();
-    while (!go_back.empty()) {
-        while(go_back.top() == m_traversal_order.back()){
+    if (m_recurse > 1) {
+        m_traversal_order.pop_back();
+        while (!go_back.empty()) {
+            while(go_back.top() == m_traversal_order.back()){
+                go_back.pop();
+            }
+            m_traversal_order.push_back(go_back.top());
             go_back.pop();
         }
-        m_traversal_order.push_back(go_back.top());
-        go_back.pop();
+        m_coords[m_coords.size()-1] = glm::vec3(0, 1, 0);
+        m_coords.push_back(glm::vec3(0,0,0));
+        m_skip_list.push_back(true);
     }
-    m_coords[m_coords.size()-1] = glm::vec3(0, 1, 0);
-    m_coords.push_back(glm::vec3(0,0,0));
-    m_skip_list.push_back(true);
+
     for (int i = 0; i < m_traversal_order.size(); i++) {
        if (m_skip_list[i] == true) {
        }

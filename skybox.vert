@@ -7,7 +7,7 @@ in vec3 position;
 
 out vec3 pos_object;
 
-const float scale = 10;
+const float scale = 60;
 
 void main() {
      pos_object = position;

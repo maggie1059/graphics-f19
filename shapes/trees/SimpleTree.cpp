@@ -10,7 +10,7 @@
 
 SimpleTree::SimpleTree(glm::vec3 origin, int levels):
     m_radius(0.05),
-    m_wedges(12),
+    m_wedges(20),
     m_parser(levels, origin)
 {
     m_coords = m_parser.getCoords();
@@ -71,8 +71,6 @@ std::vector<std::vector<glm::vec3>> SimpleTree::buildCircles() {
     }
     return circle_points;
 }
-
-
 
 
 void SimpleTree::build(){

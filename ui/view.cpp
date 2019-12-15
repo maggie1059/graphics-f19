@@ -35,10 +35,10 @@ View::View(QWidget *parent) : QGLWidget(ViewFormat(), parent),
     m_sphere(nullptr), m_cube(nullptr), m_quad(nullptr), skybox_cube(nullptr),
     m_phongShader(nullptr)
 {
-//    camera = new OrbitingCamera();
-//    QObject::connect(camera, SIGNAL(viewChanged(glm::mat4)), this, SLOT(viewChanged(glm::mat4)));
-//    QObject::connect(camera, SIGNAL(projectionChanged(glm::mat4)), this, SLOT(projectionChanged(glm::mat4)));
-//    QObject::connect(camera, SIGNAL(modelviewProjectionChanged(glm::mat4)), this, SLOT(modelviewProjectionChanged(glm::mat4)));
+    camera = new OrbitingCamera();
+    QObject::connect(camera, SIGNAL(viewChanged(glm::mat4)), this, SLOT(viewChanged(glm::mat4)));
+    QObject::connect(camera, SIGNAL(projectionChanged(glm::mat4)), this, SLOT(projectionChanged(glm::mat4)));
+    QObject::connect(camera, SIGNAL(modelviewProjectionChanged(glm::mat4)), this, SLOT(modelviewProjectionChanged(glm::mat4)));
     activeUniforms = new QList<const UniformVariable *>();
     // View needs all mouse move events, not just mouse drag events
     mouseDown = false;
@@ -150,34 +150,10 @@ bool View::loadUniforms(QString path)
 }
 
 void View::initializeScene(){
-    camera = new OrbitingCamera();
-    QObject::connect(camera, SIGNAL(viewChanged(glm::mat4)), this, SLOT(viewChanged(glm::mat4)));
-    QObject::connect(camera, SIGNAL(projectionChanged(glm::mat4)), this, SLOT(projectionChanged(glm::mat4)));
-    QObject::connect(camera, SIGNAL(modelviewProjectionChanged(glm::mat4)), this, SLOT(modelviewProjectionChanged(glm::mat4)));
-
     initializeSceneLight();
     initializeSceneMaterial();
     loadPhongShader();
     loadRayShader();
-//    activeUniforms = new QList<const UniformVariable *>();
-//    current_shader = NULL;
-//    // View needs all mouse move events, not just mouse drag events
-//    mouseDown = false;
-
-//    setMouseTracking(true);
-
-//    // Hide the cursor
-//    if (m_captureMouse) {
-//        QApplication::setOverrideCursor(Qt::BlankCursor);
-//    }
-
-//    // View needs keyboard focus
-//    setFocusPolicy(Qt::StrongFocus);
-
-//    // The update loop is implemented using a timer
-//    connect(&m_timer, SIGNAL(timeout()), this, SLOT(tick()));
-
-//    s_staticVars = new std::vector<UniformVariable*>();
 }
 
 void View::initializeGL() {
@@ -298,12 +274,25 @@ void View::buildTrees(){
     SimpleTree tree3(glm::vec3(-1.3,-2.5,-2), 2);
     tree3.buildAndSet();
     tree3.draw();
+    SimpleTree tree4(glm::vec3(1.3,-1.8,-2), 1);
+    tree4.buildAndSet();
+    tree4.draw();
+    SimpleTree tree5(glm::vec3(0.3,-1.8,-2), 1);
+    tree5.buildAndSet();
+    tree5.draw();
+    SimpleTree tree6(glm::vec3(-0.8,-1.8,-2), 1);
+    tree6.buildAndSet();
+    tree6.draw();
 }
 
 void View::paintGL() {
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
     m_phongShader->bind();
     firstPass();
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     secondPass();
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     m_rayShader->bind();
     glViewport(0, 0, m_width, m_height);
@@ -319,7 +308,6 @@ void View::paintGL() {
     glUniform1i(newLocation, 2);
     //draw full screen quad
     m_quad->draw();
-
 }
 
 void View::firstPass(){
@@ -362,13 +350,11 @@ void View::secondPass(){
     updateMatrices();
     buildTrees();
     setSunUniforms();
-    renderSun();
-
+//    renderSun();
     m_phongShader->unbind();
 
     skybox_shader->bind();
     glViewport(0, 0, m_width, m_height);
-
     projectionChanged(camera->getProjectionMatrix());
     viewChanged(camera->getModelviewMatrix());
     s_skybox->setValue(skybox_shader);
@@ -382,8 +368,8 @@ void View::secondPass(){
 }
 
 void View::setSunUniforms(){
-    glm::mat4 t = glm::translate(glm::mat4(), glm::vec3(0.0f, 0.0f, 10.0f));
-    glm::mat4 s = glm::scale(glm::vec3(0.8f, 0.8f, 0.8f));
+    glm::mat4 t = glm::translate(glm::mat4(), glm::vec3(0.0f, 0.0f, 8.0f));
+    glm::mat4 s = glm::scale(glm::vec3(6.f, 6.f, 6.f));
     glm::mat4 m = t*s;
     m_phongShader->setUniform("m", m);
 }
@@ -446,7 +432,6 @@ void View::viewChanged(const glm::mat4 &modelview)
             s << ",";
     }
     s_view->parse(QString::fromStdString(s.str()));
-
 }
 
 void View::projectionChanged(const glm::mat4 &projection)
@@ -459,8 +444,6 @@ void View::projectionChanged(const glm::mat4 &projection)
             s << ",";
     }
     s_projection->parse(QString::fromStdString(s.str()));
-
-
 }
 
 void View::modelviewProjectionChanged(const glm::mat4 &modelviewProjection)
@@ -473,8 +456,6 @@ void View::modelviewProjectionChanged(const glm::mat4 &modelviewProjection)
             s << ",";
     }
     s_mvp->parse(QString::fromStdString(s.str()));
-
-
 }
 
 void View::modelChanged(const glm::mat4 &modelview)
@@ -487,8 +468,6 @@ void View::modelChanged(const glm::mat4 &modelview)
             s << ",";
     }
     s_model->parse(QString::fromStdString(s.str()));
-
-
 }
 
 void View::clearLights() {
@@ -518,7 +497,6 @@ void View::mousePressEvent(QMouseEvent *event) {
                        QString::number(event->x()),
                        QString::number(event->y()),
                        QString::number(mouseDown)));
-
 }
 
 void View::wheelEvent(QWheelEvent *event)
@@ -526,7 +504,6 @@ void View::wheelEvent(QWheelEvent *event)
     camera->mouseScrolled(event->delta());
     camera->updateMats();
     updateMatrices();
-
 }
 
 void View::mouseMoveEvent(QMouseEvent *event) {
@@ -557,7 +534,6 @@ void View::mouseMoveEvent(QMouseEvent *event) {
                            QString::number(event->y()),
                            QString::number(mouseDown)));
     }
-
 }
 
 void View::mouseReleaseEvent(QMouseEvent *event) {
@@ -571,7 +547,6 @@ void View::mouseReleaseEvent(QMouseEvent *event) {
                        QString::number(event->y()),
                        QString::number(mouseDown)));
      updateMatrices();
-
 }
 
 void View::keyPressEvent(QKeyEvent *event) {

@@ -13,12 +13,9 @@ For crepuscular rays, we implemented a ray shader according to https://developer
 The environment map is created using the skybox, and we used the strategies from lab 9 in order to implement it.
 
 Known Bugs:
-The set up and implementation of the L-system took longer than anticipated, so we were not able to make the system work generically for multiple levels. Right now, it works as expected for 2 levels of recursion but not for other levels.
+The set up and implementation of the L-system took longer than anticipated, so we were not able to make the system work generically for multiple levels. Right now, it works as expected for up to 2 levels of recursion but not for other levels.
 It had been working generically before for all different levels. However, we changed the implementation because we noticed that all the vertices were being drawn twice, which was messing up how we were trying to tilt the circles around branch start and end points. We decided that since we wanted to implement a stationary scene, we would rather have the circles tilt than use multiple different levels of recursion. We wanted to revisit it later to make it more generic, but we ultimately ran out of time. 
 
-Our rays also are dependent on whatever objects occlude our sun object, rather than where all the light scatters, which means that trees on the side of the scene don't properly occlude the crepuscular rays.
-
-Our canvas also does not update properly when the mouse is dragged (it works before the scene is passed through our shaders, but we were unable to figure out why the mouse actions were not updating the canvas (the actions themselves are being called, and the matrices are being reset, but the canvas isn't updating properly).
 
 Note: The rays in the environment map from that sun are just part of the jpg (not our code)! We were unable to find a better-fitting environment map for our scene, so we ended up going with one that already had a sun in it.
 
